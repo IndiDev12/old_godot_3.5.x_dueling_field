@@ -1,0 +1,132 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://textures/monster_card_type/ritual.png" type="Texture" id=1]
+[ext_resource path="res://textures/monster_card_type/synchro.png" type="Texture" id=2]
+[ext_resource path="res://textures/monster_card_type/fusion.png" type="Texture" id=3]
+[ext_resource path="res://textures/monster_card_type/effect.png" type="Texture" id=4]
+[ext_resource path="res://textures/monster_card_subtype/flip.png" type="Texture" id=5]
+[ext_resource path="res://textures/monster_card_subtype/union.png" type="Texture" id=6]
+[ext_resource path="res://textures/monster_card_subtype/special-sumon.png" type="Texture" id=7]
+[ext_resource path="res://textures/monster_card_subtype/tuner.png" type="Texture" id=8]
+[ext_resource path="res://textures/monster_card_subtype/gemini.png" type="Texture" id=9]
+[ext_resource path="res://textures/monster_card_subtype/spirit.png" type="Texture" id=10]
+[ext_resource path="res://textures/monster_card_subtype/toon.png" type="Texture" id=11]
+[ext_resource path="res://textures/monster_card_type/effect_p.png" type="Texture" id=12]
+[ext_resource path="res://textures/monster_card_type/link.png" type="Texture" id=13]
+[ext_resource path="res://textures/monster_card_type/normal.png" type="Texture" id=14]
+[ext_resource path="res://textures/monster_card_type/token.png" type="Texture" id=15]
+[ext_resource path="res://textures/monster_card_type/xyz.png" type="Texture" id=16]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.309804, 1, 0.905882, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0.27451, 0.776471, 1, 1 )
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color( 0.741176, 0.137255, 1, 0.666667 )
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0.0745098, 0.188235, 1 )
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color( 0, 0, 0.0980392, 1 )
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_offset = Vector2( 57, 47 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.196078, 0, 0, 1 )
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color( 0.407843, 0, 0, 1 )
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="monster_card_type_window" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -212.5
+margin_top = -242.0
+margin_right = 212.5
+margin_bottom = 232.0
+
+[node name="monster_card_type_List" type="ItemList" parent="Panel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -210.5
+margin_top = 35.0
+margin_right = 210.5
+margin_bottom = 139.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+custom_styles/selected_focus = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+items = [ "normal", ExtResource( 14 ), false, "effect", ExtResource( 4 ), false, "ritual", ExtResource( 1 ), false, "fusion", ExtResource( 3 ), false, "synchro", ExtResource( 2 ), false, "xyz", ExtResource( 16 ), false, "link", ExtResource( 13 ), false ]
+auto_height = true
+max_columns = 7
+same_column_width = true
+icon_mode = 0
+fixed_icon_size = Vector2( 50, 50 )
+
+[node name="monster_subtype_List" type="ItemList" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -190.5
+margin_top = -58.0
+margin_right = 190.5
+margin_bottom = 204.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+custom_styles/selected_focus = SubResource( 1 )
+custom_styles/bg = SubResource( 3 )
+items = [ "special-summon", ExtResource( 7 ), false, "spirit", ExtResource( 10 ), false, "toon", ExtResource( 11 ), false, "gemini", ExtResource( 9 ), false, "flip", ExtResource( 5 ), false, "union", ExtResource( 6 ), false, "tuner", ExtResource( 8 ), false, "pendulum", ExtResource( 12 ), false, "token", ExtResource( 15 ), false ]
+select_mode = 1
+auto_height = true
+max_columns = 7
+same_column_width = true
+icon_mode = 0
+fixed_icon_size = Vector2( 50, 50 )
+
+[node name="Label" type="Label" parent="Panel"]
+anchor_right = 1.0
+margin_top = 11.0
+margin_bottom = 30.0
+text = "INCLUDE"
+align = 1
+
+[node name="Label2" type="Label" parent="Panel"]
+anchor_right = 1.0
+margin_top = 151.0
+margin_bottom = 170.0
+text = "EXCLUDE"
+align = 1

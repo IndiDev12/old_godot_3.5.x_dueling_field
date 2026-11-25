@@ -1,0 +1,83 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://textures/monster_types/beast-warrior.png" type="Texture" id=1]
+[ext_resource path="res://textures/monster_types/machine.png" type="Texture" id=2]
+[ext_resource path="res://textures/monster_types/cyberse.png" type="Texture" id=3]
+[ext_resource path="res://textures/monster_types/wyrm.png" type="Texture" id=4]
+[ext_resource path="res://textures/monster_types/aqua.png" type="Texture" id=5]
+[ext_resource path="res://textures/monster_types/illusion.png" type="Texture" id=6]
+[ext_resource path="res://textures/monster_types/divine-beast.png" type="Texture" id=7]
+[ext_resource path="res://textures/monster_types/pyro.png" type="Texture" id=8]
+[ext_resource path="res://textures/monster_types/rock.png" type="Texture" id=9]
+[ext_resource path="res://textures/monster_types/plant.png" type="Texture" id=10]
+[ext_resource path="res://textures/monster_types/zombie.png" type="Texture" id=11]
+[ext_resource path="res://textures/monster_types/psychic.png" type="Texture" id=12]
+[ext_resource path="res://textures/monster_types/diviner-beast.png" type="Texture" id=13]
+[ext_resource path="res://textures/monster_types/spellcaster.png" type="Texture" id=14]
+[ext_resource path="res://textures/monster_types/reptile.png" type="Texture" id=15]
+[ext_resource path="res://textures/monster_types/winged-beast.png" type="Texture" id=16]
+[ext_resource path="res://textures/monster_types/fish.png" type="Texture" id=17]
+[ext_resource path="res://textures/monster_types/sea-serpent.png" type="Texture" id=18]
+[ext_resource path="res://textures/monster_types/beast.png" type="Texture" id=19]
+[ext_resource path="res://textures/monster_types/warrior.png" type="Texture" id=20]
+[ext_resource path="res://textures/monster_types/fairy.png" type="Texture" id=21]
+[ext_resource path="res://textures/monster_types/dragon.png" type="Texture" id=22]
+[ext_resource path="res://textures/monster_types/thunder.png" type="Texture" id=23]
+[ext_resource path="res://textures/monster_types/fiend.png" type="Texture" id=24]
+[ext_resource path="res://textures/monster_types/dinosaur.png" type="Texture" id=25]
+[ext_resource path="res://textures/monster_types/insect.png" type="Texture" id=26]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.309804, 1, 0.905882, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0.27451, 0.776471, 1, 1 )
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color( 0.741176, 0.137255, 1, 0.666667 )
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0.0745098, 0.188235, 1 )
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color( 0, 0, 0.0980392, 1 )
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_offset = Vector2( 57, 47 )
+
+[node name="monster_type_List" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ItemList" type="ItemList" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -253.5
+margin_top = -236.0
+margin_right = 253.5
+margin_bottom = 236.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+custom_styles/selected_focus = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+items = [ "Warrior", ExtResource( 20 ), false, "Spellcaster", ExtResource( 14 ), false, "Fairy", ExtResource( 21 ), false, "Fiend", ExtResource( 24 ), false, "Zombie", ExtResource( 11 ), false, "Machine", ExtResource( 2 ), false, "Illusion", ExtResource( 6 ), false, "Aqua", ExtResource( 5 ), false, "Pyro", ExtResource( 8 ), false, "Rock", ExtResource( 9 ), false, "Winged-Beast", ExtResource( 16 ), false, "Insect", ExtResource( 10 ), false, "Insect", ExtResource( 26 ), false, "Thunder", ExtResource( 23 ), false, "Dragon", ExtResource( 22 ), false, "Beast", ExtResource( 19 ), false, "Beast-Warrior", ExtResource( 1 ), false, "Dinosaur", ExtResource( 25 ), false, "Fish", ExtResource( 17 ), false, "Sea Serpent", ExtResource( 18 ), false, "Reptile", ExtResource( 15 ), false, "Psychic", ExtResource( 12 ), false, "Divine-Beast", ExtResource( 7 ), false, "Diviner-Beast", ExtResource( 13 ), false, "Wyrm", ExtResource( 4 ), false, "Cyverse", ExtResource( 3 ), false ]
+auto_height = true
+max_columns = 5
+same_column_width = true
+icon_mode = 0
+fixed_icon_size = Vector2( 50, 50 )

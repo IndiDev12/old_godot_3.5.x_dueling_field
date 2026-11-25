@@ -1,0 +1,171 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform float ratio : hint_range(-1.0, 1.0) = 0.0;
+uniform float power = 3.0;
+uniform float min_speed = 10.0;
+uniform float max_speed = 90.0;
+
+uniform float nebula_radius = 0.5;
+uniform float nebula_rotation = 0.0;
+uniform float nebula_opacity = 0.5;
+uniform float nebula_scale = 10.0;
+uniform float nebula_intensity = 1.0;
+uniform vec3 nebula_color = vec3(1.0, 0.5, 1.0);
+
+uniform int star_count = 50;
+uniform float star_opacity = 0.8;
+uniform float star_min_size = 0.01;
+uniform float star_max_size = 0.05;
+uniform float star_rotation_value = 0.2;
+uniform float star_move_value = 0.01;
+uniform vec3 star_color = vec3(1.0, 1.0, 1.0);
+
+uniform float flare_opacity = 1.0; // Opacity of the central flare
+uniform float flare_rotation = 0.0; // Rotation of light rays
+uniform float flare_glow_strength = 1.0; // Glow strength of the flare
+uniform float flare_size = 0.2; // Size of the flare
+
+uniform float flare_circle_opacity = 0.8; // Opacity of the central circle
+uniform float flare_circle_size = 0.05; // Size of the central circle
+
+uniform float secondary_rays_rotation = 0.0; // Rotation of secondary light rays
+uniform float secondary_rays_length = 1.0; // Length of secondary light rays
+uniform float secondary_rays_opacity = 0.5; // Opacity of secondary light rays
+
+// Pseudo-random function
+float random(vec2 st) {
+    return fract(sin(dot(st.xy, vec2(12.9898, 78.233))) * 43758.5453123);
+}
+
+// Simple noise function using pseudo-random generator
+float noise(vec2 st) {
+    vec2 i = floor(st);
+    vec2 f = fract(st);
+    vec2 u = f * f * (3.0 - 2.0 * f);
+    return mix(mix(random(i + vec2(0.0, 0.0)), random(i + vec2(1.0, 0.0)), u.x),
+               mix(random(i + vec2(0.0, 1.0)), random(i + vec2(1.0, 1.0)), u.x), u.y);
+}
+
+// Function to draw stars with flare effect
+vec4 draw_stars(vec2 uv, float time) {
+    vec4 stars = vec4(0.0);
+    for (int i = 0; i < star_count; i++) {
+        float seed = float(i) / float(star_count);
+        vec2 star_pos = vec2(random(vec2(seed, 0.0)), random(vec2(0.0, seed))) * 2.0 - 1.0;
+        
+        // Star rotation
+        float angle = star_rotation_value;
+        float sin_angle = sin(angle);
+        float cos_angle = cos(angle);
+        star_pos = vec2(
+            star_pos.x * cos_angle - star_pos.y * sin_angle,
+            star_pos.x * sin_angle + star_pos.y * cos_angle
+        );
+        
+        // Star movement
+        float star_distance = fract(star_move_value + seed);
+        star_pos *= star_distance;
+        
+        float star_size = mix(star_min_size, star_max_size, random(vec2(seed, seed * 0.5)));
+        float dist = length(uv - star_pos);
+        float flare = smoothstep(star_size, star_size * 0.5, dist);
+        
+        // Add a radial gradient for the flare effect
+        flare *= pow(1.0 - dist / star_size, 2.0);
+        
+        stars += vec4(star_color, 1.0) * flare * star_opacity;
+    }
+    return stars;
+}
+
+// Function to draw the central flare with light rays
+vec4 draw_central_flare(vec2 uv, float time) {
+    vec4 flare = vec4(0.0);
+    float len = length(uv);
+    
+    // Flare glow
+    float glow = exp(-pow(len / flare_size, 2.0)) * flare_glow_strength;
+    
+    // Light rays
+    float angle = atan(uv.y, uv.x) + flare_rotation;
+    float rays = sin(angle * 10.0) * 0.5 + 0.5; // 10.0 controls the number of rays
+    
+    // Secondary light rays
+    float secondary_angle = atan(uv.y, uv.x) + secondary_rays_rotation;
+    float secondary_rays = sin(secondary_angle * 20.0) * 0.5 + 0.5; // 20.0 controls the number of secondary rays
+    
+    // Combine glow and rays
+    flare += vec4(vec3(glow * rays), 1.0) * flare_opacity;
+    flare += vec4(vec3(glow * secondary_rays * secondary_rays_length), 1.0) * secondary_rays_opacity;
+    
+    // Central circle
+    float circle = smoothstep(flare_circle_size, 0.0, len);
+    flare += vec4(vec3(1.0), 1.0) * circle * flare_circle_opacity;
+
+    return flare;
+}
+
+void fragment() {
+    vec2 uv = UV;
+    float time = TIME;
+
+    uv *= 2.0;
+    uv -= vec2(1.0);
+
+    float len = length(uv);
+
+    // Swirl effect where distortion is maximum at ratio near 0 and decreases as ratio approaches -1 or 1
+    float rspeed = mix(max_speed, min_speed, len);
+    float sinx = sin((1.0 - abs(ratio)) * rspeed);
+    float cosx = cos((1.0 - abs(ratio)) * rspeed);
+    vec2 trs = vec2(
+        uv.x * cosx - uv.y * sinx,
+        uv.x * sinx + uv.y * cosx
+    );
+    trs /= pow(abs(ratio) + 0.1, power);  // Adjusting the scaling so it approaches undistorted as ratio moves away from 0
+
+    trs += vec2(1.0);
+    trs /= 2.0;
+
+    // Check if the coordinates are out of bounds
+    if (trs.x > 1.0 || trs.x < 0.0 || trs.y > 1.0 || trs.y < 0.0) {
+        COLOR = vec4(0.0);
+    } else {
+        vec4 col = texture(TEXTURE, trs);
+
+        // Nebula effect
+        vec2 nebula_uv = uv;
+        float sin_angle = sin(nebula_rotation);
+        float cos_angle = cos(nebula_rotation);
+        nebula_uv = vec2(
+            uv.x * cos_angle - uv.y * sin_angle,
+            uv.x * sin_angle + uv.y * cos_angle
+        );
+        nebula_uv += vec2(1.0);
+        nebula_uv /= 2.0;
+
+        // Calculate the fade based on the distance from the center
+        float fade = smoothstep(nebula_radius, 0.0, len);
+
+        // Generate the nebula texture procedurally
+        float nebula_noise = noise(nebula_uv * nebula_scale);
+        vec4 nebula_col = vec4(nebula_color * nebula_noise * nebula_intensity, nebula_noise) * fade * nebula_opacity;
+
+        // Combine the original texture and the nebula effect
+        col = mix(col, nebula_col, nebula_col.a);
+
+        // Add stars with flare effect
+        vec4 star_col = draw_stars(uv, time);
+        col = mix(col, star_col, star_col.a);
+
+        // Add central flare with light rays
+        vec4 central_flare = draw_central_flare(uv, time);
+        // Additive blending for the central flare to avoid dark blending
+        col.rgb += central_flare.rgb * central_flare.a;
+        
+        COLOR = col;
+    }
+}"

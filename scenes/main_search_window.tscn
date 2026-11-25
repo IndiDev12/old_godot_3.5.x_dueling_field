@@ -1,0 +1,651 @@
+[gd_scene load_steps=37 format=2]
+
+[ext_resource path="res://textures/monster_types/beast-warrior.png" type="Texture" id=1]
+[ext_resource path="res://textures/monster_types/machine.png" type="Texture" id=2]
+[ext_resource path="res://textures/monster_types/cyberse.png" type="Texture" id=3]
+[ext_resource path="res://textures/attributes/earth.png" type="Texture" id=4]
+[ext_resource path="res://textures/monster_types/wyrm.png" type="Texture" id=5]
+[ext_resource path="res://textures/monster_types/aqua.png" type="Texture" id=6]
+[ext_resource path="res://textures/monster_types/illusion.png" type="Texture" id=7]
+[ext_resource path="res://textures/monster_types/divine-beast.png" type="Texture" id=8]
+[ext_resource path="res://textures/monster_types/pyro.png" type="Texture" id=9]
+[ext_resource path="res://textures/monster_types/rock.png" type="Texture" id=10]
+[ext_resource path="res://textures/monster_types/plant.png" type="Texture" id=11]
+[ext_resource path="res://textures/monster_types/zombie.png" type="Texture" id=12]
+[ext_resource path="res://textures/monster_types/psychic.png" type="Texture" id=13]
+[ext_resource path="res://textures/monster_types/diviner-beast.png" type="Texture" id=14]
+[ext_resource path="res://textures/monster_types/spellcaster.png" type="Texture" id=15]
+[ext_resource path="res://textures/monster_types/reptile.png" type="Texture" id=16]
+[ext_resource path="res://textures/monster_types/winged-beast.png" type="Texture" id=17]
+[ext_resource path="res://textures/monster_types/fish.png" type="Texture" id=18]
+[ext_resource path="res://textures/monster_types/sea-serpent.png" type="Texture" id=19]
+[ext_resource path="res://textures/monster_types/beast.png" type="Texture" id=20]
+[ext_resource path="res://textures/monster_types/warrior.png" type="Texture" id=21]
+[ext_resource path="res://textures/monster_types/fairy.png" type="Texture" id=22]
+[ext_resource path="res://textures/monster_types/dragon.png" type="Texture" id=23]
+[ext_resource path="res://textures/monster_types/thunder.png" type="Texture" id=24]
+[ext_resource path="res://textures/monster_types/fiend.png" type="Texture" id=25]
+[ext_resource path="res://textures/monster_types/dinosaur.png" type="Texture" id=26]
+[ext_resource path="res://textures/monster_types/insect.png" type="Texture" id=27]
+[ext_resource path="res://textures/spell_trap_types/Continuous.png" type="Texture" id=28]
+[ext_resource path="res://textures/level_rank_pendulum_links/latest.png" type="Texture" id=29]
+[ext_resource path="res://textures/spell_trap_types/Quick-Play.png" type="Texture" id=30]
+[ext_resource path="res://fonts/Trueno-wml2.otf" type="DynamicFontData" id=31]
+[ext_resource path="res://textures/spell_trap_types/Equip.png" type="Texture" id=32]
+[ext_resource path="res://textures/spell_trap_types/Field.png" type="Texture" id=33]
+[ext_resource path="res://textures/spell_trap_types/Ritual.png" type="Texture" id=34]
+[ext_resource path="res://textures/monster_card_type/normal.png" type="Texture" id=35]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 31 )
+
+[node name="main_search_window" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -492.0
+margin_top = -287.0
+margin_right = 492.0
+margin_bottom = 287.0
+
+[node name="main_VBoxContainer" type="VBoxContainer" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -409.5
+margin_top = -278.0
+margin_right = 366.5
+margin_bottom = 280.0
+custom_constants/separation = -4
+
+[node name="name_container" type="HBoxContainer" parent="Panel/main_VBoxContainer"]
+margin_right = 776.0
+margin_bottom = 40.0
+alignment = 1
+
+[node name="TextEdit" type="LineEdit" parent="Panel/main_VBoxContainer/name_container"]
+margin_right = 400.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 400, 20 )
+align = 1
+editable = false
+
+[node name="text_CheckButton" type="CheckButton" parent="Panel/main_VBoxContainer/name_container"]
+margin_left = 404.0
+margin_right = 588.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "name"
+
+[node name="text_CheckButton2" type="CheckButton" parent="Panel/main_VBoxContainer/name_container"]
+margin_left = 592.0
+margin_right = 776.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "disc"
+
+[node name="text_CheckButton3" type="CheckButton" parent="Panel/main_VBoxContainer/name_container"]
+visible = false
+margin_left = 641.0
+margin_right = 776.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "archtype"
+
+[node name="ban" type="HBoxContainer" parent="Panel/main_VBoxContainer"]
+margin_top = 36.0
+margin_right = 776.0
+margin_bottom = 76.0
+alignment = 1
+
+[node name="ban_CheckButton" type="CheckButton" parent="Panel/main_VBoxContainer/ban"]
+margin_right = 191.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "banned"
+
+[node name="ban_CheckButton2" type="CheckButton" parent="Panel/main_VBoxContainer/ban"]
+margin_left = 195.0
+margin_right = 386.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "limited"
+
+[node name="ban_CheckButton3" type="CheckButton" parent="Panel/main_VBoxContainer/ban"]
+margin_left = 390.0
+margin_right = 581.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "smi-limited"
+
+[node name="ban_CheckButton4" type="CheckButton" parent="Panel/main_VBoxContainer/ban"]
+margin_left = 585.0
+margin_right = 776.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "unlimited"
+
+[node name="ocg_tcg" type="HBoxContainer" parent="Panel/main_VBoxContainer"]
+margin_top = 72.0
+margin_right = 776.0
+margin_bottom = 112.0
+alignment = 1
+
+[node name="ocg_tcg_CheckButton" type="CheckButton" parent="Panel/main_VBoxContainer/ocg_tcg"]
+margin_right = 256.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "OCG"
+
+[node name="ocg_tcg_CheckButton2" type="CheckButton" parent="Panel/main_VBoxContainer/ocg_tcg"]
+margin_left = 260.0
+margin_right = 516.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "TCG"
+
+[node name="ocg_tcg_CheckButton3" type="CheckButton" parent="Panel/main_VBoxContainer/ocg_tcg"]
+margin_left = 520.0
+margin_right = 776.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "OCG/TCG"
+
+[node name="ocg_tcg_CheckButton4" type="CheckButton" parent="Panel/main_VBoxContainer/ocg_tcg"]
+visible = false
+margin_left = 585.0
+margin_right = 776.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "unlimited"
+
+[node name="apply_search_filters" type="Button" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 392.0
+margin_top = 21.0
+margin_right = 473.0
+margin_bottom = 271.0
+text = "apply"
+
+[node name="Panel" type="Panel" parent="Panel"]
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -410.0
+margin_top = -102.0
+margin_right = 368.0
+margin_bottom = 272.0
+
+[node name="monster_search_window" type="VBoxContainer" parent="Panel/Panel"]
+anchor_right = 1.0
+margin_bottom = 375.0
+alignment = 1
+
+[node name="attribute_container" type="HBoxContainer" parent="Panel/Panel/monster_search_window"]
+margin_top = 22.0
+margin_right = 778.0
+margin_bottom = 63.0
+custom_constants/separation = 37
+alignment = 1
+
+[node name="attribute_Button" type="Button" parent="Panel/Panel/monster_search_window/attribute_container"]
+margin_left = 3.0
+margin_right = 661.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 658, 0 )
+disabled = true
+text = "earth"
+icon = ExtResource( 4 )
+
+[node name="attribute_CheckButton" type="CheckButton" parent="Panel/Panel/monster_search_window/attribute_container"]
+margin_left = 698.0
+margin_right = 774.0
+margin_bottom = 41.0
+
+[node name="card_type_container" type="HBoxContainer" parent="Panel/Panel/monster_search_window"]
+margin_top = 67.0
+margin_right = 778.0
+margin_bottom = 107.0
+custom_constants/separation = 37
+alignment = 1
+
+[node name="monster_card_type_Button" type="Button" parent="Panel/Panel/monster_search_window/card_type_container"]
+margin_left = 3.0
+margin_right = 661.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 658, 0 )
+disabled = true
+text = "normal"
+icon = ExtResource( 35 )
+expand_icon = true
+
+[node name="monster_card_type_CheckButton" type="CheckButton" parent="Panel/Panel/monster_search_window/card_type_container"]
+margin_left = 698.0
+margin_right = 774.0
+margin_bottom = 40.0
+
+[node name="type_container" type="HBoxContainer" parent="Panel/Panel/monster_search_window"]
+margin_top = 111.0
+margin_right = 778.0
+margin_bottom = 152.0
+custom_constants/separation = 37
+alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="Panel/Panel/monster_search_window/type_container"]
+visible = false
+margin_left = 2.0
+margin_right = 660.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 658, 0 )
+custom_fonts/font = SubResource( 1 )
+toggle_mode = false
+shortcut_in_tooltip = false
+text = "Warrior"
+icon = ExtResource( 21 )
+clip_text = true
+align = 1
+expand_icon = true
+items = [ "Warrior", ExtResource( 21 ), false, 0, null, "Spellcaster", ExtResource( 15 ), false, 1, null, "Fairy", ExtResource( 22 ), false, 2, null, "Fiend", ExtResource( 25 ), false, 3, null, "Zombie", ExtResource( 12 ), false, 4, null, "Machine", ExtResource( 2 ), false, 5, null, "Ilusion", ExtResource( 7 ), false, 6, null, "Aqua", ExtResource( 6 ), false, 7, null, "Pyro", ExtResource( 9 ), false, 8, null, "Rock", ExtResource( 10 ), false, 9, null, "Winged-Beast", ExtResource( 17 ), false, 10, null, "Plant", ExtResource( 11 ), false, 11, null, "Insect", ExtResource( 27 ), false, 12, null, "Thunder", ExtResource( 24 ), false, 13, null, "Dragon", ExtResource( 23 ), false, 14, null, "Beast", ExtResource( 20 ), false, 15, null, "Beast-Warrior", ExtResource( 1 ), false, 16, null, "Dinosaur", ExtResource( 26 ), false, 17, null, "Fish", ExtResource( 18 ), false, 18, null, "Sea Serpent", ExtResource( 19 ), false, 19, null, "Reptile", ExtResource( 16 ), false, 20, null, "Item 21", null, false, 21, null, "Psychic", ExtResource( 13 ), false, 22, null, "Divine-Beast", ExtResource( 8 ), false, 23, null, "Diviner-Beast", ExtResource( 14 ), false, 24, null, "Wyrm", ExtResource( 5 ), false, 25, null, "Cyverse", ExtResource( 3 ), false, 26, null ]
+selected = 0
+
+[node name="monster_type_Button" type="Button" parent="Panel/Panel/monster_search_window/type_container"]
+margin_left = 3.0
+margin_right = 661.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 658, 0 )
+disabled = true
+text = "wariorr"
+icon = ExtResource( 21 )
+
+[node name="monster_type_CheckButton" type="CheckButton" parent="Panel/Panel/monster_search_window/type_container"]
+margin_left = 698.0
+margin_right = 774.0
+margin_bottom = 41.0
+
+[node name="link_container" type="HBoxContainer" parent="Panel/Panel/monster_search_window"]
+margin_top = 156.0
+margin_right = 778.0
+margin_bottom = 196.0
+custom_constants/separation = 37
+alignment = 1
+
+[node name="link_Button" type="Button" parent="Panel/Panel/monster_search_window/link_container"]
+margin_left = 3.0
+margin_right = 661.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 658, 0 )
+disabled = true
+text = "top-left"
+icon = ExtResource( 29 )
+
+[node name="link_CheckButton" type="CheckButton" parent="Panel/Panel/monster_search_window/link_container"]
+margin_left = 698.0
+margin_right = 774.0
+margin_bottom = 40.0
+
+[node name="level_rank_container" type="HBoxContainer" parent="Panel/Panel/monster_search_window"]
+margin_top = 200.0
+margin_right = 778.0
+margin_bottom = 240.0
+
+[node name="level_rank_TextEdit" type="LineEdit" parent="Panel/Panel/monster_search_window/level_rank_container"]
+margin_right = 198.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 198, 20 )
+align = 1
+editable = false
+
+[node name="level_rank_TextEdit2" type="LineEdit" parent="Panel/Panel/monster_search_window/level_rank_container"]
+margin_left = 202.0
+margin_right = 400.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 198, 20 )
+align = 1
+editable = false
+
+[node name="level_rank_OptionButton" type="OptionButton" parent="Panel/Panel/monster_search_window/level_rank_container"]
+margin_left = 404.0
+margin_right = 603.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 199, 30 )
+disabled = true
+text = "equal"
+align = 1
+items = [ "equal", null, false, 0, null, "greater than", null, false, 1, null, "less than", null, false, 2, null, "greater than or equal", null, false, 3, null, "less than or equal", null, false, 4, null, "not equal", null, false, 5, null, "range", null, false, 6, null ]
+selected = 0
+
+[node name="level_rank_CheckButton" type="CheckButton" parent="Panel/Panel/monster_search_window/level_rank_container"]
+margin_left = 607.0
+margin_right = 778.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "level/rank/link"
+align = 1
+
+[node name="level_rank_CheckButton2" type="CheckButton" parent="Panel/Panel/monster_search_window/level_rank_container"]
+visible = false
+margin_left = 669.0
+margin_right = 776.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "rank"
+align = 1
+
+[node name="atk_def_container" type="HBoxContainer" parent="Panel/Panel/monster_search_window"]
+margin_top = 244.0
+margin_right = 778.0
+margin_bottom = 308.0
+custom_constants/separation = 9
+
+[node name="GridContainer" type="GridContainer" parent="Panel/Panel/monster_search_window/atk_def_container"]
+margin_right = 400.0
+margin_bottom = 64.0
+columns = 2
+
+[node name="TextEdit2" type="LineEdit" parent="Panel/Panel/monster_search_window/atk_def_container/GridContainer"]
+margin_right = 198.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 198, 30 )
+align = 1
+editable = false
+
+[node name="TextEdit3" type="LineEdit" parent="Panel/Panel/monster_search_window/atk_def_container/GridContainer"]
+margin_left = 202.0
+margin_right = 400.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 198, 30 )
+align = 1
+editable = false
+
+[node name="TextEdit4" type="LineEdit" parent="Panel/Panel/monster_search_window/atk_def_container/GridContainer"]
+margin_top = 34.0
+margin_right = 198.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 198, 30 )
+align = 1
+editable = false
+caret_blink = true
+
+[node name="TextEdit5" type="LineEdit" parent="Panel/Panel/monster_search_window/atk_def_container/GridContainer"]
+margin_left = 202.0
+margin_top = 34.0
+margin_right = 400.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 198, 30 )
+align = 1
+editable = false
+caret_blink = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/Panel/monster_search_window/atk_def_container"]
+margin_left = 409.0
+margin_right = 624.0
+margin_bottom = 64.0
+alignment = 1
+
+[node name="atk_def_OptionButton" type="OptionButton" parent="Panel/Panel/monster_search_window/atk_def_container/VBoxContainer2"]
+margin_right = 215.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 215, 30 )
+disabled = true
+text = "equal"
+align = 1
+items = [ "equal", null, false, 0, null, "greater than", null, false, 1, null, "less than", null, false, 2, null, "greater than or equal", null, false, 3, null, "less than or equal", null, false, 4, null, "not equal", null, false, 5, null, "range", null, false, 6, null ]
+selected = 0
+
+[node name="atk_def_OptionButton2" type="OptionButton" parent="Panel/Panel/monster_search_window/atk_def_container/VBoxContainer2"]
+margin_top = 34.0
+margin_right = 215.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 215, 30 )
+disabled = true
+text = "equal"
+align = 1
+items = [ "equal", null, false, 0, null, "greater than", null, false, 1, null, "less than", null, false, 2, null, "greater than or equal", null, false, 3, null, "less than or equal", null, false, 4, null, "not equal", null, false, 5, null, "range", null, false, 6, null ]
+selected = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Panel/monster_search_window/atk_def_container"]
+margin_left = 633.0
+margin_right = 733.0
+margin_bottom = 64.0
+custom_constants/separation = -16
+alignment = 1
+
+[node name="atk_def_CheckButton" type="CheckButton" parent="Panel/Panel/monster_search_window/atk_def_container/VBoxContainer"]
+margin_right = 100.0
+margin_bottom = 40.0
+text = "atk"
+
+[node name="atk_def_CheckButton2" type="CheckButton" parent="Panel/Panel/monster_search_window/atk_def_container/VBoxContainer"]
+margin_top = 24.0
+margin_right = 100.0
+margin_bottom = 64.0
+text = "def"
+
+[node name="link_number_container" type="HBoxContainer" parent="Panel/Panel/monster_search_window"]
+visible = false
+margin_top = 290.0
+margin_right = 778.0
+margin_bottom = 330.0
+alignment = 1
+
+[node name="TextEdit" type="LineEdit" parent="Panel/Panel/monster_search_window/link_number_container"]
+margin_right = 198.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 198, 20 )
+align = 1
+editable = false
+
+[node name="TextEdit2" type="LineEdit" parent="Panel/Panel/monster_search_window/link_number_container"]
+margin_left = 202.0
+margin_right = 400.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 198, 20 )
+align = 1
+editable = false
+
+[node name="CheckButton" type="CheckButton" parent="Panel/Panel/monster_search_window/link_number_container"]
+margin_left = 404.0
+margin_right = 589.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "name"
+
+[node name="CheckButton2" type="CheckButton" parent="Panel/Panel/monster_search_window/link_number_container"]
+margin_left = 593.0
+margin_right = 778.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "name"
+
+[node name="pendulum_container" type="HBoxContainer" parent="Panel/Panel/monster_search_window"]
+margin_top = 312.0
+margin_right = 778.0
+margin_bottom = 352.0
+alignment = 1
+
+[node name="TextEdit" type="LineEdit" parent="Panel/Panel/monster_search_window/pendulum_container"]
+margin_right = 198.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 198, 20 )
+align = 1
+editable = false
+
+[node name="TextEdit2" type="LineEdit" parent="Panel/Panel/monster_search_window/pendulum_container"]
+margin_left = 202.0
+margin_right = 400.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 198, 20 )
+align = 1
+editable = false
+
+[node name="pendulum_OptionButton2" type="OptionButton" parent="Panel/Panel/monster_search_window/pendulum_container"]
+margin_left = 404.0
+margin_right = 619.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 215, 30 )
+disabled = true
+text = "equal"
+align = 1
+items = [ "equal", null, false, 0, null, "greater than", null, false, 1, null, "less than", null, false, 2, null, "greater than or equal", null, false, 3, null, "less than or equal", null, false, 4, null, "not equal", null, false, 5, null, "range", null, false, 6, null ]
+selected = 0
+
+[node name="CheckButton" type="CheckButton" parent="Panel/Panel/monster_search_window/pendulum_container"]
+margin_left = 623.0
+margin_right = 778.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "name"
+
+[node name="CheckButton2" type="CheckButton" parent="Panel/Panel/monster_search_window/pendulum_container"]
+visible = false
+margin_left = 743.0
+margin_right = 859.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "name"
+
+[node name="spell_search_window" type="VBoxContainer" parent="Panel/Panel"]
+visible = false
+margin_left = -1.0
+margin_top = 7.0
+margin_right = 775.0
+margin_bottom = 455.0
+alignment = 1
+
+[node name="type_container" type="HBoxContainer" parent="Panel/Panel/spell_search_window"]
+margin_top = 200.0
+margin_right = 776.0
+margin_bottom = 248.0
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Panel/spell_search_window/type_container"]
+margin_left = 280.0
+margin_right = 304.0
+margin_bottom = 48.0
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Panel/spell_search_window/type_container/VBoxContainer"]
+margin_right = 24.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 20, 20 )
+texture = ExtResource( 28 )
+expand = true
+stretch_mode = 1
+
+[node name="CheckBox" type="CheckBox" parent="Panel/Panel/spell_search_window/type_container/VBoxContainer"]
+margin_top = 24.0
+margin_right = 24.0
+margin_bottom = 48.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/Panel/spell_search_window/type_container"]
+margin_left = 308.0
+margin_right = 332.0
+margin_bottom = 48.0
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Panel/spell_search_window/type_container/VBoxContainer2"]
+margin_right = 24.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 20, 20 )
+texture = ExtResource( 32 )
+expand = true
+stretch_mode = 1
+
+[node name="CheckBox" type="CheckBox" parent="Panel/Panel/spell_search_window/type_container/VBoxContainer2"]
+margin_top = 24.0
+margin_right = 24.0
+margin_bottom = 48.0
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Panel/Panel/spell_search_window/type_container"]
+margin_left = 336.0
+margin_right = 360.0
+margin_bottom = 48.0
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Panel/spell_search_window/type_container/VBoxContainer3"]
+margin_right = 24.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 20, 20 )
+texture = ExtResource( 33 )
+expand = true
+stretch_mode = 1
+
+[node name="CheckBox" type="CheckBox" parent="Panel/Panel/spell_search_window/type_container/VBoxContainer3"]
+margin_top = 24.0
+margin_right = 24.0
+margin_bottom = 48.0
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="Panel/Panel/spell_search_window/type_container"]
+margin_left = 364.0
+margin_right = 388.0
+margin_bottom = 48.0
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Panel/spell_search_window/type_container/VBoxContainer4"]
+margin_right = 24.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 20, 20 )
+texture = ExtResource( 30 )
+expand = true
+stretch_mode = 1
+
+[node name="CheckBox" type="CheckBox" parent="Panel/Panel/spell_search_window/type_container/VBoxContainer4"]
+margin_top = 24.0
+margin_right = 24.0
+margin_bottom = 48.0
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="Panel/Panel/spell_search_window/type_container"]
+margin_left = 392.0
+margin_right = 416.0
+margin_bottom = 48.0
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Panel/spell_search_window/type_container/VBoxContainer5"]
+margin_right = 24.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 20, 20 )
+texture = ExtResource( 34 )
+expand = true
+stretch_mode = 1
+
+[node name="CheckBox" type="CheckBox" parent="Panel/Panel/spell_search_window/type_container/VBoxContainer5"]
+margin_top = 24.0
+margin_right = 24.0
+margin_bottom = 48.0
+
+[node name="CheckButton" type="CheckButton" parent="Panel/Panel/spell_search_window/type_container"]
+margin_left = 420.0
+margin_right = 496.0
+margin_bottom = 48.0
+
+[node name="monster_spell_trap_options" type="OptionButton" parent="Panel"]
+margin_left = 884.0
+margin_top = 227.0
+margin_right = 964.0
+margin_bottom = 290.0
+text = "monster"
+items = [ "monster", null, false, 0, null, "spell", null, false, 1, null, "trap", null, false, 2, null ]
+selected = 0

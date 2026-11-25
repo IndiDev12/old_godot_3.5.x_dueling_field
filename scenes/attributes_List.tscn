@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://textures/attributes/fire.png" type="Texture" id=1]
+[ext_resource path="res://textures/attributes/divine.png" type="Texture" id=2]
+[ext_resource path="res://textures/attributes/earth.png" type="Texture" id=3]
+[ext_resource path="res://textures/attributes/wind.png" type="Texture" id=4]
+[ext_resource path="res://textures/attributes/water.png" type="Texture" id=5]
+[ext_resource path="res://textures/attributes/light.png" type="Texture" id=6]
+[ext_resource path="res://textures/attributes/dark.png" type="Texture" id=7]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.309804, 1, 0.905882, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0.27451, 0.776471, 1, 1 )
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color( 0.741176, 0.137255, 1, 0.666667 )
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0.0745098, 0.188235, 1 )
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color( 0, 0, 0.0980392, 1 )
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_offset = Vector2( 57, 47 )
+
+[node name="attributes_List" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ItemList" type="ItemList" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -199.5
+margin_top = -41.0
+margin_right = 220.5
+margin_bottom = 63.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+custom_styles/selected_focus = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+items = [ "EARTH", ExtResource( 3 ), false, "WATER", ExtResource( 5 ), false, "FIRE", ExtResource( 1 ), false, "WIND", ExtResource( 4 ), false, "LIGHT", ExtResource( 6 ), false, "DARK", ExtResource( 7 ), false, "DIVINE", ExtResource( 2 ), false ]
+auto_height = true
+max_columns = 7
+same_column_width = true
+icon_mode = 0
+fixed_icon_size = Vector2( 50, 50 )
